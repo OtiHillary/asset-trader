@@ -1,13 +1,90 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>Assert Trader Login</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- FontAwesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <!----Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <!-- Header with H1 -->
+    <div class="header">
+      <h1>Welcome to Assert Trader</h1>
+    </div>
+
+    <!-- Login Container -->
+    <div class="login-container">
+      <div class="toggle-buttons">
+        <button id="user-login-btn" class="active">
+          <i class="fas fa-user"></i> User Login
+        </button>
+        <button id="admin-login-btn">
+          <i class="fas fa-lock"></i> Admin Login
+        </button>
+      </div>
+
+      <!-- User Login Form -->
+      <form id="user-login-form" class="login-form">
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input type="email" id="user-email" placeholder="Email" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-key"></i>
+          <input
+            type="password"
+            id="user-password"
+            placeholder="Password"
+            required
+          />
+        </div>
+        <button type="submit">Login as User</button>
+        <p class="signup-link">
+          Don't have an account? <a href="#">Sign Up</a>
+        </p>
+      </form>
+
+      <!-- Admin Login Form -->
+      <form id="admin-login-form" class="login-form hidden">
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input
+            type="email"
+            id="admin-email"
+            placeholder="Admin Email"
+            required
+          />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-key"></i>
+          <input
+            type="password"
+            id="admin-password"
+            placeholder="Admin Password"
+            required
+          />
+        </div>
+        <button type="submit">Login as Admin</button>
+        <p class="signup-link">
+          Don't have an account? <a href="#">Sign Up</a>
+        </p>
+      </form>
+
+      <p id="error-message" class="error-message"></p>
+    </div>
+
+    <script src="app.js"></script>
   </body>
 </html>
