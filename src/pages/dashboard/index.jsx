@@ -4,12 +4,9 @@ import Rates from '../../components/rates'
 
 export default function Dashboard() {
     return (
-        <>
-        <Nav/>
         <main>
           <Assets/>  
           <Rates/>
         </main>
-      </>
     )
   }
