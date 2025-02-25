@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link, useSearchParams } from 'react-router-dom';
 
 const TradeComponent = () => {
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get('cardname');
+  
   const [tradeData, setTradeData] = useState({
-    name: '',
+    name: query,
+    code:'',
     image: null,
-    crypto: ''
   });
 
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
-  const { trade } = useLocation();
-  const queryParams = new URLSearchParams(trade);
-  const query = queryParams.get('crypto');
+  // setTradeData({ ...tradeData, [name]: 'query' });
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -52,22 +53,37 @@ const TradeComponent = () => {
 
   return (
     <main>
-      <div className="p-1 px-2 bg-gray-50 shadow-xs m-1 rounded-md w-full flex flex-col flex-start">
-        <h1 className="font-bold text-lg">Trade</h1>
+      <div className="p-1 px-2 shadow-xs m-1 rounded-md w-full flex flex-col flex-start">
+        <h2 className="font-bold text-2xl my-2">Trade</h2>
         <form onSubmit={handleSubmit}>
           <div className="flex flex-col">
             <label className="font-bold text-sm" htmlFor="name">
-              Name:
+              Card name:
             </label>
             <input
               type="text"
               id="name"
               name="name"
               value={tradeData.name}
+              disabled
+              className="p-2 border border-gray-300 rounded-md"
+            />
+          </div>
+
+          <div className="flex flex-col">
+            <label className="font-bold text-sm" htmlFor="name">
+              Code:
+            </label>
+            <input
+              type="text"
+              id="code"
+              name="code"
+              value={tradeData.code}
               onChange={handleInputChange}
               className="p-2 border border-gray-300 rounded-md"
             />
           </div>
+
           <div className="flex flex-col mt-4">
             <label className="font-bold text-sm" htmlFor="image">
               Image:

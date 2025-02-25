@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 export default function Rates() {
     const assets = [
         {
@@ -30,15 +32,21 @@ export default function Rates() {
                 {
                     assets.map((value, index)=> {
                         return(
-                            <tbody key={index}>
-                                <tr class="hover:bg-transparent">
-                                    <td class="px-1 py-2 w-10">
-                                        <img src={ value.image } alt="gcard image" className="w-6"/>
-                                    </td>
-                                    <td class="px-1 py-2">{value.name}</td>
-                                    <td class="px-1 py-2" className="font-bold text-teal-500">{value.rate}</td>
-                                </tr>
-                            </tbody>
+                            <Link to={{
+                                pathname: '/trade',
+                                search: `?cardname=${value.name}`
+                            }}>
+                                <tbody key={index}>
+                                    <tr class="hover:bg-transparent">
+                                        <td class="px-1 py-2 w-10">
+                                            <img src={ value.image } alt="gcard image" className="w-6"/>
+                                        </td>
+                                        <td class="px-1 py-2">{value.name}</td>
+                                        <td class="px-1 py-2" className="font-bold text-teal-500">{value.rate}</td>
+                                    </tr>
+                                </tbody>  
+                            </Link>
+
                         )
                     })
                 }
